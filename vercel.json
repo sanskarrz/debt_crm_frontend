@@ -1,9 +1,11 @@
 {
-  "buildCommand": "npm run build",
-  "outputDirectory": ".next",
-  "devCommand": "npm run dev",
-  "installCommand": "npm install",
-  "framework": "nextjs",
+  "version": 2,
+  "builds": [
+    {
+      "src": "frontend/package.json",
+      "use": "@vercel/next"
+    }
+  ],
   "functions": {
     "pages/api/**/*.js": {
       "runtime": "nodejs18.x"
@@ -12,7 +14,10 @@
   "rewrites": [
     {
       "source": "/api/:path*",
-      "destination": "https://your-backend-app.render.com/api/:path*"
+      "destination": "https://debt-recovery-crm-backend.onrender.com/api/:path*"
     }
-  ]
+  ],
+  "env": {
+    "NEXT_PUBLIC_API_URL": "https://debt-recovery-crm-backend.onrender.com"
+  }
 }
